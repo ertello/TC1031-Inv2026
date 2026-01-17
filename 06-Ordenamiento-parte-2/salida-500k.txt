@@ -1,0 +1,25 @@
+Size: 500000
+Print flag: 0
+Swap sort
+	Comparaciones: 124999750000
+	Intercambios: 35337856078
+	Tiempo de ejecución en ms: 1142312
+Selection sort
+	Comparaciones: 124999750000
+	Intercambios: 499999
+	Tiempo de ejecución en ms: 226914
+Bubble sort
+  Comparaciones: 124999750000
+  Intercambios: 62526360617
+  Tiempo de ejecución en ms: 1176391
+Insertion sort
+  Comparaciones: 124997598577
+  Intercambios: 124997598577
+  Tiempo de ejecución en ms: 190990
+Mergesort
+  Comparaciones: 8837475
+  Tiempo de ejecución en ms: 191
+Quicksort
+  Comparaciones: 13516517
+  Intercambios: 5779862
+  Tiempo de ejecución en ms: 393
