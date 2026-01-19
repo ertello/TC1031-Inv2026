@@ -18,6 +18,12 @@ class LinkedList {
     void printList();
     void addFirst(T value);
     void addLast(T value);
+    bool deleteData(T value);
+    bool deleteAt(int position);
+    T getData(int position);
+    void updateData(T value, T newValue);
+    // To do
+    void updateAt(int position);
 };
 
 // Complejidad O(1)
@@ -98,5 +104,115 @@ void LinkedList<T>::addLast(T value) {
   }
 }
 
-  
+// Complejidad O(n)
+template <class T>
+bool LinkedList<T>::deleteData(T value) {
+  // La lista esta vacia
+  if (head == nullptr && tail == nullptr) {
+    std::cout << "La lista esta vacia" << std::endl;
+    return false;
+  }
+  // Buscar el nodo con value en la lista
+  NodeLinkedList<T> *p = head, *prev = nullptr;
+  while (p != nullptr && p->data != value) {
+    prev = p;
+    p = p->next;
+  }
+  // Nodo con value no encontrado
+  if (p == nullptr) {
+    std::cout << "El valor no existe en la lista" << std::endl;
+    return false;
+  }
+  // Caso 1: borrar el primer nodo de la lista
+  if (p == head) {
+    head = p->next;
+    if (head == nullptr) // Si la lista contiene un solo nodo
+      tail = nullptr;
+  }
+  // Caso 2: borrar el ultimo nodo de la lista
+  else if (p == tail) {
+    prev->next = nullptr;
+    tail = prev;
+  }
+  // Caso 3: borrar nodo intermedio de la lista
+  else {
+    prev->next = p->next;
+  }
+  // Finalmente borramos el nodo apuntado por p
+  delete p;
+  p = nullptr;
+  numElements--;
+  return true;
+}
+
+// Complejidad O(n)
+template <class T>
+bool LinkedList<T>::deleteAt(int position) {
+  // La lista esta vacia
+  if (head == nullptr && tail == nullptr)
+    throw std::out_of_range("La lista esta vacia");
+  // Posicion invalida
+  if (position < 0 || position >= numElements)
+    throw std::out_of_range("Posicion invalida");
+  // Avanzar hasta el nodo en la posicion indicada
+  NodeLinkedList<T> *p = head, *prev = nullptr;
+  for (int i = 0; i < position; i++) {
+    prev = p;
+    p = p->next;
+  }
+  // Caso 1: borrar el primer nodo de la lista
+  if (p == head) {
+    head = p->next;
+    if (head == nullptr) // Si la lista contiene un solo nodo
+      tail = nullptr;
+  }
+  // Caso 2: borrar el ultimo nodo de la lista
+  else if (p == tail) {
+    prev->next = nullptr;
+    tail = prev;
+  }
+  // Caso 3: borrar nodo intermedio de la lista
+  else {
+    prev->next = p->next;
+  }
+  // Finalmente borramos el nodo apuntado por p
+  delete p;
+  p = nullptr;
+  numElements--;
+  return true;
+}
+
+// Complejidad O(n)
+template <class T>
+T LinkedList<T>::getData(int position) {
+  // La lista esta vacia
+  if (head == nullptr && tail == nullptr)
+    throw std::out_of_range("La lista esta vacia");
+  // Posicion invalida
+  if (position < 0 || position >= numElements)
+    throw std::out_of_range("Posicion invalida");
+  // Avanzar hasta el nodo en la posicion indicada
+  NodeLinkedList<T> *p = head;
+  for (int i = 0; i < position; i++)
+    p = p->next;
+  return p->data;
+}
+
+// Complejidad O(n)
+template <class T>
+void LinkedList<T>::updateData(T value, T newValue) {
+  // La lista esta vacia
+  if (head == nullptr && tail == nullptr)
+    throw std::out_of_range("La lista esta vacia");
+  // Buscar el nodo con value en la lista
+  NodeLinkedList<T> *p = head;
+  while (p != nullptr && p->data != value)
+    p = p->next;
+  // Nodo con value no encontrado
+  if (p == nullptr)
+    throw std::out_of_range("El elemento a actualizar no existe en la lista");
+  // Actualizar eñ dato encontrado
+  p->data = newValue;
+}
+
 #endif // _LINKEDLIST_H_
