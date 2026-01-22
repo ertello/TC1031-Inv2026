@@ -145,7 +145,7 @@ void AlgorithmSort<T>::merge(std::vector<T> &A, size_t low, size_t m, size_t hig
   k = low;
   while (i < n1 && j < n2) {
     compara++;
-    if (L[i] <= R[i]) {
+    if (L[i] <= R[j]) { // R[i]: Error corregido el 21/Ene/2026
       A[k] = L[i];
       i++;
     }
