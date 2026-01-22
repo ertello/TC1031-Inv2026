@@ -14,6 +14,10 @@ class BST {
     NodeBST<T>* insertRecursive(NodeBST<T>*root, T value);
     NodeBST<T>* deleteRecursive(NodeBST<T> *root, T value);
     NodeBST<T>* getSuccesor(NodeBST<T> *root);
+    // Metodos auxiliares para recorridos
+    void recursivePreorder(NodeBST<T> *root);
+    void recursiveInorder(NodeBST<T> *root);
+    void recursivePostorder(NodeBST<T> *root);
 
   public:
     BST();
@@ -22,7 +26,10 @@ class BST {
     bool search(T value);
     void insert(T value);
     void deleteNode(T value);
-
+    // Recorridos
+    void preorder();
+    void inorder();
+    void postorder();
 };
 
 // O(1)
