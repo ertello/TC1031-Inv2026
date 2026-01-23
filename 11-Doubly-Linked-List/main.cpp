@@ -38,7 +38,7 @@ int main() {
   std::cout << "numElements: " << miLista.getNumElements() << std::endl;
   miLista.printList();
   std::cout << std::endl;
-
+/*
   // deleteData
   std::cout << "deleteData 10: " << std::endl;
   miLista.deleteData(10);
@@ -176,6 +176,6 @@ int main() {
   std::cout << "numElements: " << miLista.getNumElements() << std::endl;
   miLista.printList();
   std::cout << std::endl;
-
+*/
   return 0;
 }

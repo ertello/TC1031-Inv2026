@@ -88,7 +88,8 @@ void DoublyLinkedList<T>::addFirst(T value) {
     head->prev = newNode;
   else  // caso de una lista vacia
     tail = newNode;
-  head = newNode;  
+  head = newNode;
+  numElements++; // Error corregido 23/Ene/2026
 }
 
 // Complejidad O(1)
@@ -101,6 +102,7 @@ void DoublyLinkedList<T>::addLast(T value) {
   else // caso de una lista vacia
     head = newNode;
   tail = newNode;
+  numElements++; // Error corregido 23/Ene/2026
 }
 
 // Complejidad O(n)
