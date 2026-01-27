@@ -41,7 +41,7 @@ int main() {
 
   myBST.printTree();
   std::cout << std::endl;
-
+/*
   std::cout << "Delete: 3 (nodo hoja)" << std::endl;
   myBST.deleteNode(3);
   myBST.printTree();
@@ -58,7 +58,12 @@ int main() {
   myBST.deleteNode(320);
   myBST.printTree();
   std::cout << std::endl;
-
+*/
+  // Recorridos  
+  myBST.preorder();
+  myBST.inorder();
+  myBST.postorder();
+  myBST.levelByLevel();
 
   return 0;
 }

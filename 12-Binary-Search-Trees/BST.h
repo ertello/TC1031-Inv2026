@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "NodeBST.h"
+#include "QueueLL.h"
 
 template <class T>
 class BST {
@@ -18,6 +19,7 @@ class BST {
     void recursivePreorder(NodeBST<T> *root);
     void recursiveInorder(NodeBST<T> *root);
     void recursivePostorder(NodeBST<T> *root);
+    void auxiliarLevelByLevelOrder(NodeBST<T> *root);
 
   public:
     BST();
@@ -30,6 +32,11 @@ class BST {
     void preorder();
     void inorder();
     void postorder();
+    void levelByLevel();
+    // To-do Act 3.1
+    //ancestors
+    //whatlevelamI
+    //minDifference
 };
 
 // O(1)
@@ -161,6 +168,85 @@ NodeBST<T>* BST<T>::deleteRecursive(NodeBST<T> *p, T value) {
 template <class T>
 void BST<T>::deleteNode(T value) {
   root = deleteRecursive(root, value);
+}
+
+// Peor caso complejidad O(n) donde n es el numero de nodos del BST
+template <class T>
+void BST<T>::recursivePreorder(NodeBST<T> *p) {
+  if (p != nullptr) {
+      std::cout << p->data << ", ";
+      recursivePreorder(p->left);
+      recursivePreorder(p->right);
+  }
+}
+
+// Peor caso complejidad O(n) donde n es el numero de nodos del BST
+template <class T>
+void BST<T>::preorder() {
+  std::cout << "preorder(): " << std::endl;
+  recursivePreorder(root);
+  std::cout << std::endl;
+}
+
+// Peor caso complejidad O(n) donde n es el numero de nodos del BST
+template <class T>
+void BST<T>::recursiveInorder(NodeBST<T> *p) {
+  if (p != nullptr) {
+      recursiveInorder(p->left);
+      std::cout << p->data << ", ";
+      recursiveInorder(p->right);
+  }
+}
+
+// Peor caso complejidad O(n) donde n es el numero de nodos del BST
+template <class T>
+void BST<T>::inorder() {
+  std::cout << "inorder(): " << std::endl;
+  recursiveInorder(root);
+  std::cout << std::endl;
+}
+
+// Peor caso complejidad O(n) donde n es el numero de nodos del BST
+template <class T>
+void BST<T>::recursivePostorder(NodeBST<T> *p) {
+  if (p != nullptr) {
+      recursivePostorder(p->left);
+      recursivePostorder(p->right);
+      std::cout << p->data << ", ";
+  }
+}
+
+// Peor caso complejidad O(n) donde n es el numero de nodos del BST
+template <class T>
+void BST<T>::postorder() {
+  std::cout << "postorder(): " << std::endl;
+  recursivePostorder(root);
+  std::cout << std::endl;
+}
+
+// O(n)
+template <class T> 
+void BST<T>::auxiliarLevelByLevelOrder(NodeBST<T> *p) {
+  QueueLL<NodeBST<T> *> fila;
+  fila.enqueue(p);
+  while (!fila.isEmpty()) {
+    NodeBST<T> *q = fila.peek();
+    fila.dequeue();
+    std::cout << q->data << ", ";
+    if (q->left != nullptr)
+      fila.enqueue(q->left);
+    if (q->right != nullptr)
+      fila.enqueue(q->right);
+  }
+} 
+
+// O(n)
+template <class T> 
+void BST<T>::levelByLevel() {  
+  std::cout << "levelByLevel():" << std::endl;
+    auxiliarLevelByLevelOrder(root);
+  std::cout << std::endl;
+
 }
 
 #endif // _BST_H_
