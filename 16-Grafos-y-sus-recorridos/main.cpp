@@ -26,7 +26,7 @@ int main() {
   // lista de adyacencia
   g1.readGraph(inputInfo, 1, 1);
   g1.print();
-  g1.DFS(3); // nodo es cero basado
+  g1.DFS(0); // nodo es cero basado
   std::cout << std::endl;
   return 0;
 }
