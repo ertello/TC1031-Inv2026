@@ -4,8 +4,8 @@
 * Compilacion para debug:  
 *    g++ -std=c++17 -g -o main *.cpp 
 * Ejecucion con valgrind:
-*    nix-env -iA nixpkgs.valgrind
-*    valgrind --leak-check=full ./main < TestCases/graph01.txt
+*    modify hidden file replit.nix to add pkgs.valgrind
+*    valgrind --run-libc-freeres=no --leak-check=full ./main < TestCases/graph01.txt
 *
 * Compilacion para ejecucion:  
 *    g++ -std=c++17 -O3 -o main *.cpp 
