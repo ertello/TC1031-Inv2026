@@ -23,7 +23,6 @@ int main() {
   std::cout << "Hash Table Example!\n";
 
   HashTable<int, std::string> myHashTable;
-  //HashTable<unsigned int, ipAddress> myHashTable;
 
   myHashTable.setMaxSize(7);
   std::cout << "Table current size: " << myHashTable.getNumElements() << std::endl;
